@@ -72,8 +72,10 @@ def play_summary(
     week = int(play["week"])
     if qtr == 5:
         qtr = "OT"
+        qtr_string = qtr
     else:
         qtr = ordinal(int(qtr)) + " Quarter"
+        qtr_string = f"the {qtr}"
 
     down = ordinal(int(play["down"]))
 
@@ -95,7 +97,7 @@ def play_summary(
     astat_val = round(play[astat].values[0], 2)
     nstat_val = round(stat_val + astat_val, 2)
 
-    sentence = f"{season} (week {week}): {awayteam} ({awayscore}) at {hometeam} ({homescore}). {time} left in {qtr}. {down} down and {togo} at {yrdln}. {stat.upper()}: {str(stat_val)} -> {str(nstat_val)}"
+    sentence = f"{season} (week {week}): {awayteam} ({awayscore}) at {hometeam} ({homescore}). {time} left in {qtr_string}. {down} down and {togo} at {yrdln}. {stat.upper()}: {str(stat_val)} -> {str(nstat_val)}"
     return sentence
 
 
